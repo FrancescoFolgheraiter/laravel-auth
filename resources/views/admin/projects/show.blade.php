@@ -10,8 +10,24 @@
                     <h1 class="text-center text-success">
                         Progetto: {{ $project->name}}
                     </h1>
-                    <br>
-                    
+                    <hr>
+                    @if ($project->thumb==null)
+                        Non ci sono immagini
+                    @else
+                        <img src="{{ $project->thumb }}" alt="{{ $project->name}}">
+                    @endif
+                    <p class="card-text">{{ $project->description}}</p>
+                    <h5>Tecnologie utilizzate</h5>
+                    <ul>
+                        @php
+                            $technologies = explode(" ",$project->technologies)
+                        @endphp
+                        @foreach ($technologies  as $technologie)
+                            <li>
+                                {{ $technologie }}
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
