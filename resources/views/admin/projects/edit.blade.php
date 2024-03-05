@@ -11,8 +11,9 @@
                         Modifica progetto: {{ $project->name }}
                     </h1>
                     <br>
-                    <form action="{{ route('admin.projects.store') }}" method="POST">
+                    <form action="{{ route('admin.projects.update', ['project' => $project->id]) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="mb-3">
                            <label for="name" class="form-label">Nome del progetto <span class="text-danger">*</span></label>
                            <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name" placeholder="Inserisci il nome..." maxlength="255" required value="{{ $project->name }}">
@@ -77,8 +78,8 @@
                             @enderror
                          </div>
                         <div>
-                           <button type="submit" class="btn btn-success w-100">
-                                 + Aggiungi
+                           <button type="submit" class="btn btn-warning w-100">
+                                 Modifica
                            </button>
                         </div>
                       </form>

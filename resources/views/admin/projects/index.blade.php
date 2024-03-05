@@ -30,13 +30,20 @@
                                 <td>{{ $project->start_date }}</td>
                                 <td>{{ $project->last_update_date }}</td>
                                 <td>{{ $project->total_hours }}</td>
-                                <td>
-                                    <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}" class="btn btn-xs btn-primary">
+                                <td class="d-flex ">
+                                    <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}" class="btn btn-xs btn-primary me-2">
                                         Vedi
                                     </a>
-                                    <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}" class="btn btn-warning">
+                                    <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}" class="btn btn-warning me-2">
                                         Modifica
                                     </a>
+                                    <form onsubmit="return confirm('Sei sicuro di voler eliminare questa voce?');"  action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+                                                Elimina
+                                            </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
