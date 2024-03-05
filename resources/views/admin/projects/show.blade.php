@@ -17,17 +17,24 @@
                         <img src="{{ $project->thumb }}" alt="{{ $project->name}}">
                     @endif
                     <p class="card-text">{{ $project->description}}</p>
-                    <h5>Tecnologie utilizzate</h5>
-                    <ul>
-                        @php
-                            $technologies = explode(" ",$project->technologies)
-                        @endphp
-                        @foreach ($technologies  as $technologie)
-                            <li>
-                                {{ $technologie }}
-                            </li>
-                        @endforeach
-                    </ul>
+                    <div>
+                        <div>
+                            <h5>Tecnologie utilizzate</h5>
+                            <ul>
+                                @php
+                                    $technologies = explode(" ",$project->technologies)
+                                @endphp
+                                @foreach ($technologies  as $technologie)
+                                    <li>
+                                        {{ $technologie }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Tecnologie utilizzate</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
