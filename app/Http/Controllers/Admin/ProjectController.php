@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 //importazione medel project
 use App\Models\Project;
 
-
+// Helpers per slug
+use Illuminate\Support\Str;
 class ProjectController extends Controller
 {
     /**
@@ -35,8 +36,13 @@ class ProjectController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $projectData = $request->all();
+        $slug = Str::slug($projectData['name']);
+        $projectData['slug']=$slug;
+        $project = Project::create($projectData);
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**

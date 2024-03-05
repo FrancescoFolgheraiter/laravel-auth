@@ -42,7 +42,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="technologies" class="form-label">Tecnologie utilizzate <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control  @error('technologies') is-invalid @enderror" id="technologies" technologies="technologies" placeholder="Inserisci le tecnologie..." maxlength="255" required value="{{ old('technologies') }}">
+                            <input type="text" class="form-control  @error('technologies') is-invalid @enderror" id="technologies" name="technologies" placeholder="Inserisci le tecnologie..." maxlength="255" required value="{{ old('technologies') }}">
                             @error('technologies')
                                  <div class="alert alert-danger">
                                      {{ $message }}
@@ -68,8 +68,8 @@
                             @enderror
                          </div>
                         <div class="mb-3">
-                            <label for="total_hours" class="form-label">Ore totali di progetto:</label>
-                            <input type="number" step="0.1" class="form-control" id="total_hours" name="total_hours" placeholder="Inserisci il totale ore..." min="0.5" max="999.99" value="{{ old('total_hours') }}">
+                            <label for="total_hours" class="form-label">Ore totali di progetto (formato ##.#):</label>
+                            <input type="number" step="0.1" class="form-control" id="total_hours" name="total_hours" placeholder="##.#" min="0.5" max="999.99" value="{{ old('total_hours') }}">
                             @error('total_hours')
                                  <div class="alert alert-danger">
                                      {{ $message }}
