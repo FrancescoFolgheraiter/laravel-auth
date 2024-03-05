@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', '{{ $project->name}}')
+@section('page-title', 'Progetto'.$project->name )
 {{-- importazione carbon --}}
 @php
     use Carbon\Carbon;

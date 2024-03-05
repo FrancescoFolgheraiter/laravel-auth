@@ -58,9 +58,10 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(string $slug)
     {
-        //
+        $project = Project::where('slug', $slug)->firstOrFail();
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
