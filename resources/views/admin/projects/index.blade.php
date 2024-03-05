@@ -19,6 +19,7 @@
                                 <th scope="col">Data inizio</th>
                                 <th scope="col">Ultimo aggiornamento</th>
                                 <th scope="col">Totale ore</th>
+                                <th scope="col">Azioni</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,11 @@
                                 <td>{{ $project->start_date }}</td>
                                 <td>{{ $project->last_update_date }}</td>
                                 <td>{{ $project->total_hours }}</td>
+                                <td>
+                                    <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}" class="btn btn-xs btn-primary">
+                                        Vedi
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
