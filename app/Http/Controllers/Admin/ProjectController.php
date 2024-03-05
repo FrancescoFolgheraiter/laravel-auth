@@ -1,9 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Project;
+//importazione controller
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+// Models
+//importazione medel project
+use App\Models\Project;
+
 
 class ProjectController extends Controller
 {
