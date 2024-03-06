@@ -3,6 +3,11 @@
 @section('page-title', 'Progetti-realizzati')
 
 @section('main-content')
+{{-- importazione carbon --}}
+@php
+    use Carbon\Carbon;
+@endphp
+
     <div class="row">
         <div class="col">
             <div class="card">
@@ -19,7 +24,7 @@
                                 <th scope="col">Data inizio</th>
                                 <th scope="col">Ultimo aggiornamento</th>
                                 <th scope="col">Totale ore</th>
-                                <th scope="col">Azioni</th>
+                                <th colspan="3" class="text-center"scope="col">Azioni</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,16 +32,24 @@
                             <tr>
                                 <th scope="row">{{ $project->name }}</th>
                                 <td>{{ $project->technologies }}</td>
-                                <td>{{ $project->start_date }}</td>
-                                <td>{{ $project->last_update_date }}</td>
+                                <td>{{ Carbon::createFromFormat('Y-m-d', $project->start_date)->format('d-m-Y')}}</td>
+                                <td>
+                                    @if (!($project->last_update_date==null))
+                                    {{ Carbon::createFromFormat('Y-m-d', $project->last_update_date)->format('d-m-Y') }}
+                                    @endif
+                                </td>
                                 <td>{{ $project->total_hours }}</td>
-                                <td class="d-flex ">
+                                <td>
                                     <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}" class="btn btn-xs btn-primary me-2">
                                         Vedi
                                     </a>
+                                </td>
+                                <td>
                                     <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}" class="btn btn-warning me-2">
                                         Modifica
                                     </a>
+                                </td>
+                                <td>
                                     <form onsubmit="return confirm('Sei sicuro di voler eliminare questa voce?');"  action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

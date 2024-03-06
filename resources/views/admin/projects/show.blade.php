@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('page-title', 'Progetto'.$project->name )
+
+@section('main-content')
 {{-- importazione carbon --}}
 @php
     use Carbon\Carbon;
 @endphp
-
-@section('main-content')
 <div class="row">
         <div class="col">
             <div class="card">
